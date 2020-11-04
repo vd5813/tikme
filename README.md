@@ -1,5 +1,5 @@
 ### Library App
-Allows to Issue(Available) and Return(Issued) books. Also has a transaction for books that are issued and returned.
+Allows to Issue(Available) and Return(Issued) books. Also has a transaction log for books that are issued and returned.
 
 ### Setup
 
