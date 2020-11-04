@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
+    <title>Library App</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Library App</h1>
+        <ul>
+            <!-- Iterating over the books array -->
+            <% books.forEach(book => { %>
+            <h3>
+                <li> <%= book.name %> </li>
+                <form action="/transaction/addtrans" method="POST">
+                    <input type="hidden" name="name" value="<%= book.name %>" />
+                    <input type="hidden" name="status" value="<%= book.status %>" />
+                    <button type="submit" class="status"
+                        data-id=["<%= book.name %>","<%= book.status %>","<%= book._id %>"]
+                        value="<%= book.status %>"><%= book.status %></button>
+                </form>
+            </h3>
+            <% }) %>
+        </ul>
+        <script>
+            $(document).ready(function () {
+                $('.status').on('click', function () {
+
+                    // Getting data from form and parsing it
+                    let a, b, c
+                    [a, b, c] = JSON.parse(this.dataset.id)
+
+                    b = b == "Available" ? "Issued" : "Available"
+
+                    let URL = 'http://localhost:3000/' + c
+
+                    data = { name: a, status: b }
+                    $.ajax({
+                        type: 'PUT',
+                        url: URL,
+                        data: JSON.stringify(data),
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (err) {
+                            console.log('success!');
+                        }
+                    });
+                    $(this).parent().trigger('submit')
+                    return false;
+                });
+            })
+        </script>
+
+        <a href="/transaction">All Transactions</a>
+    </div>
+</body>
+
+</html>

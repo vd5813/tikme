@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Transaction List</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Transactions</h1>
+        <div>
+            <table>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Transaction Date</th>
+                    <th>Status</th>
+                </tr>
+                <!-- Iterating over the Transaction array -->
+                <% transaction.forEach(trans => { %>
+                <tr>
+                    <td><%= trans.name %></td>
+                    <td><%= trans.date %></td>
+                    <td><%= trans.status %></td>
+                </tr>
+
+                <% }) %>
+
+            </table>
+        </div>
+        <a href="/">Home</a>
+    </div>
+</body>
+
+</html>
