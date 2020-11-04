@@ -1,12 +1,13 @@
 ### Library App
 
-### setup
+### Setup
 
-### DB
+#### DB
 Needs MongoDB installed on machine
+Download url - https://www.mongodb.com/try/download/community
 
-### Config
-##### run - npm install
-to install dependencies
+#### Config
+##### install dependencies
+run - npm install
 ##### script to start server
 npm run startDev
